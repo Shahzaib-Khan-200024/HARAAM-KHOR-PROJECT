@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toggle Game Project</title>
+  <style>
+    body {
+      background-color: #252525;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+      padding: 0;
+      width: 100%;
+    }
+
+    /* Container for each toggle switch */
+    .toggle-container {
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px;
+      min-width: 200px;
+    }
+
+    /* Toggle switch styling */
+    .toggle {
+      position: relative;
+      width: 80px;
+      height: 40px;
+      background-color: #ccc;
+      border-radius: 40px;
+      margin-right: 15px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    /* Circle inside the toggle */
+    .toggle-circle {
+      position: absolute;
+      width: 36px;
+      height: 36px;
+      background-color: white;
+      border-radius: 50%;
+      top: 2px;
+      left: 2px;
+      transition: transform 0.3s ease;
+    }
+
+    /* Active state of the toggle */
+    .toggle.active {
+      background-color: #4caf50;
+    }
+
+    .toggle.active .toggle-circle {
+      transform: translateX(40px);
+    }
+
+    /* Text next to toggle */
+    .toggle-text {
+      font-size: 24px;
+      min-width: 100px;
+      margin-left: 20px;
+    }
+
+    /* Add new container for better alignment */
+    .main-container {
+      background-color: #b8b4b4;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      min-width: 300px;
+      margin: 20px;
+    }
+
+    .heading {
+      margin-bottom: 30px;
+      color: #333;
+    }
+
+    .title {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 20px;
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    .main-container h1{
+      font-size: 50px;
+      margin-bottom: 20px;
+      margin-top: -25px;
+    }
+
+    /* Responsive styles */
+    @media screen and (max-width: 480px) {
+      .main-container {
+        min-width: unset;
+        width: 85%;
+        padding: 20px;
+      }
+
+      .main-container h1 {
+        font-size: 40px;
+        margin-top: -15px;
+      }
+
+      .subtitle {
+        font-size: 16px;
+        margin-bottom: 20px;
+      }
+
+      .toggle {
+        width: 60px;
+        height: 30px;
+      }
+
+      .toggle-circle {
+        width: 26px;
+        height: 26px;
+      }
+
+      .toggle.active .toggle-circle {
+        transform: translateX(30px);
+      }
+
+      .toggle-text {
+        font-size: 18px;
+        min-width: 90px;
+        margin-left: 15px;
+      }
+
+      .toggle-container {
+        min-width: 180px;
+        margin-bottom: 20px;
+      }
+    }
+
+    /* For very small devices */
+    @media screen and (max-width: 320px) {
+      .main-container {
+        padding: 15px;
+      }
+
+      .toggle {
+        width: 50px;
+        height: 25px;
+      }
+
+      .toggle-circle {
+        width: 21px;
+        height: 21px;
+      }
+
+      .toggle.active .toggle-circle {
+        transform: translateX(25px);
+      }
+
+      .toggle-text {
+        font-size: 16px;
+        min-width: 80px;
+        margin-left: 10px;
+      }
+
+      .toggle-container {
+        min-width: 160px;
+        margin-bottom: 15px;
+      }
+    }
+
+    /* For tablets and medium-sized devices */
+    @media screen and (min-width: 481px) and (max-width: 768px) {
+      .main-container {
+        min-width: 300px;
+        padding: 30px;
+      }
+
+      .toggle-container {
+        min-width: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="main-container">
+    <!-- Add heading section -->
+    <div class="heading">
+      <h1 class="title">💀</h1>
+      <p class="subtitle">Aisa hi hota hai beta!</p>
+    </div>
+
+    <!-- Existing toggle containers -->
+    <div class="toggle-container">
+      <div class="toggle" id="toggle-beautiful" onclick="handleToggle('Beautiful')">
+        <div class="toggle-circle"></div>
+      </div>
+      <div class="toggle-text">Beautiful</div>
+    </div>
+
+    <div class="toggle-container">
+      <div class="toggle" id="toggle-dahej" onclick="handleToggle('Dahej')">
+        <div class="toggle-circle"></div>
+      </div>
+      <div class="toggle-text">Dahej</div>
+    </div>
+
+    <div class="toggle-container">
+      <div class="toggle" id="toggle-seal-packed" onclick="handleToggle('Seal Packed')">
+        <div class="toggle-circle"></div>
+      </div>
+      <div class="toggle-text">Seal Packed</div>
+    </div>
+  </div>
+
+  <script>
+    function handleToggle(selectedToggle) {
+      // Get each toggle element
+      const beautifulToggle = document.getElementById('toggle-beautiful');
+      const dahejToggle = document.getElementById('toggle-dahej');
+      const sealPackedToggle = document.getElementById('toggle-seal-packed');
+
+      // Toggle the selected switch
+      if (selectedToggle === 'Beautiful') {
+        beautifulToggle.classList.toggle('active');
+        if (beautifulToggle.classList.contains('active') && dahejToggle.classList.contains('active')) {
+          sealPackedToggle.classList.remove('active');
+        }
+      } else if (selectedToggle === 'Dahej') {
+        dahejToggle.classList.toggle('active');
+        if (dahejToggle.classList.contains('active') && sealPackedToggle.classList.contains('active')) {
+          beautifulToggle.classList.remove('active');
+        }
+      } else if (selectedToggle === 'Seal Packed') {
+        sealPackedToggle.classList.toggle('active');
+        if (sealPackedToggle.classList.contains('active') && beautifulToggle.classList.contains('active')) {
+          dahejToggle.classList.remove('active');
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>
